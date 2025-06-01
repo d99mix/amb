@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AMB SYSTEM - Profesjonalna inspekcja i czyszczenie instalacji HVAC zgodnie z PN-EN 15780. Dezynfekcja, konserwacja, pomiary. Kraków i okolice.">
+    <meta name="keywords" content="czyszczenie wentylacji, inspekcja HVAC, dezynfekcja klimatyzacji, AMB SYSTEM Kraków, PN-EN 15780">
+    <title>AMB SYSTEM - Profesjonalna inspekcja i czyszczenie instalacji HVAC | Kraków</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8dc63f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AMB SYSTEM">
+    <meta name="msapplication-TileColor" content="#8dc63f">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="public/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="public/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="public/icons/favicon-16x16.png">
+    <link rel="mask-icon" href="public/icons/safari-pinned-tab.svg" color="#8dc63f">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'amb-primary': '#8dc63f',
+                        'amb-primary-dark': '#5a8b2f',
+                        'amb-primary-light': '#a8d65a',
+                        'amb-accent': '#6ba82f',
+                        'amb-accent-light': '#9dd158',
+                        'amb-light': '#f5f8f5',
+                        'amb-dark': '#222222',
+                        'amb-text': '#333333',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.6s ease-out',
+                        'fade-in-right': 'fadeInRight 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Custom CSS dla stylu zgodnego z ulotkami -->
+    <style>
+        /* === ZMIENNE CSS === */
+        :root {
+            --amb-primary: #8dc63f;
+            --amb-primary-dark: #6ba82f;
+            --amb-primary-light: #a8d65a;
+            --amb-text-dark: #2d3748;
+            --amb-border: #e2e8f0;
+            
+            /* Transitions */
+            --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Spacing */
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+        }
+
+        /* === PODSTAWOWE USTAWIENIA === */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        /* === TŁO ZDJĘCIOWE === */
+        .bg-image {
+            background-image: url('images/background-blur.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .bg-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+
+        .bg-image > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === KOMPONENTY === */
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nature-hero {
+            background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
+        }
+
+        .leaflet-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(141, 198, 63, 0.1);
+            border: 1px solid var(--amb-border);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leaflet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+        }
+
+        .leaflet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(141, 198, 63, 0.15);
+        }
+
+        .leaflet-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .leaflet-btn {
+            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leaflet-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(141, 198, 63, 0.3);
+        }
+
+        .geometric-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+            border-radius: 50%;
+            opacity: 0.05;
+            transform: rotate(45deg);
+        }
+
+        .high-contrast-text {
+            color: var(--amb-text-dark);
+            font-weight: 500;
+        }
+
+        /* === RESPONSYWNOŚĆ === */
+        @media (max-width: 768px) {
+            .leaflet-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-amb-text antialiased">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-effect border-b border-gray-200/20">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo - Left -->
+                <a href="index.html" class="flex items-baseline space-x-1 group">
+                    <span class="text-2xl lg:text-3xl font-bold text-amb-primary group-hover:text-amb-primary-dark transition-colors">AMB</span>
+                    <span class="text-lg lg:text-xl font-light text-amb-text">SYSTEM</span>
+                </a>
+                
+                <!-- Navigation - Center -->
+                <div class="hidden lg:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
+                    <a href="index.html" class="text-amb-primary font-medium border-b-2 border-amb-primary pb-1">Strona główna</a>
+                    <a href="o-nas.html" class="text-amb-text hover:text-amb-primary transition-colors">O nas</a>
+                    <a href="uslugi.html" class="text-amb-text hover:text-amb-primary transition-colors">Usługi</a>
+                    <a href="technologia.html" class="text-amb-text hover:text-amb-primary transition-colors">Technologia</a>
+                    <a href="normy.html" class="text-amb-text hover:text-amb-primary transition-colors">Normy</a>
+                    <a href="kontakt.html" class="text-amb-text hover:text-amb-primary transition-colors">Kontakt</a>
+                </div>
+                
+                <!-- CTA Button - Right -->
+                <a href="kontakt.html#wycena" class="hidden lg:block bg-amb-primary hover:bg-amb-primary-dark text-white px-6 py-2.5 rounded-full font-medium transition-all hover:shadow-lg">
+                    Zamów wycenę
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Otwórz menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-amb-primary font-medium py-2">Strona główna</a>
+                    <a href="o-nas.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">O nas</a>
+                    <a href="uslugi.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Usługi</a>
+                    <a href="technologia.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Technologia</a>
+                    <a href="normy.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Normy</a>
+                    <a href="kontakt.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Kontakt</a>
+                    <a href="kontakt.html#wycena" class="bg-amb-primary text-white px-6 py-3 rounded-full font-medium text-center mt-4">
+                        Zamów wycenę
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="pt-16 lg:pt-20" tabindex="-1">
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center relative overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/pexels-jose-andres-pacheco-cortes-3641213-5463575.jpg');">
+            <!-- Dark overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+            <!-- Green overlay to maintain brand colors -->
+            <div class="absolute inset-0 bg-gradient-to-br from-amb-primary/30 via-amb-primary/20 to-amb-primary-dark/30"></div>
+            <!-- Decorative overlay -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent transform skew-x-12"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                        <span class="text-white block">Profesjonalna inspekcja</span>
+                        <span class="text-white/90 block text-3xl sm:text-4xl lg:text-5xl font-light mt-2">
+                            i czyszczenie instalacji HVAC
+                        </span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-white/95 mb-8 max-w-4xl mx-auto leading-relaxed">
+                        Zapewniamy czystość i bezpieczeństwo systemów wentylacyjnych w obiektach przemysłowych, handlowych i publicznych zgodnie z normami PN-EN 15780
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="kontakt.html#wycena" 
+                           class="leaflet-btn inline-flex items-center justify-center space-x-3 text-lg px-10 py-4 bg-white text-amb-primary hover:bg-gray-50 focus:ring-4 focus:ring-white/30"
+                           aria-label="Przejdź do formularza wyceny">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                            <span>Zamów bezpłatną wycenę</span>
+                        </a>
+                        <a href="uslugi.html" 
+                           class="leaflet-btn inline-flex items-center justify-center space-x-3 text-lg px-10 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-amb-primary focus:ring-4 focus:ring-white/30"
+                           aria-label="Poznaj nasze usługi">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                            <span>Poznaj usługi</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Statystyki -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-white/20">
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white mb-2">500+</div>
+                            <div class="text-white/80 text-sm lg:text-base">Zrealizowanych projektów</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white mb-2">15+</div>
+                            <div class="text-white/80 text-sm lg:text-base">Lat doświadczenia</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white mb-2">100%</div>
+                            <div class="text-white/80 text-sm lg:text-base">Zgodność z normami</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl lg:text-4xl font-bold text-white mb-2">24h</div>
+                            <div class="text-white/80 text-sm lg:text-base">Czas odpowiedzi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="py-20 lg:py-32 bg-image">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-amb-text mb-4">
+                        Dlaczego <span class="text-amb-primary">AMB SYSTEM</span>?
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Jesteśmy liderem w dziedzinie czyszczenia instalacji HVAC
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Certyfikowane usługi</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Pracujemy zgodnie z normami PN-EN 15780 i PN-EN 12097:2007, 
+                            zapewniając najwyższą jakość usług.
+                        </p>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Nowoczesny sprzęt</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Wykorzystujemy najnowocześniejszy sprzęt firmy Lifa Air Ltd 
+                            z Finlandii do czyszczenia instalacji.
+                        </p>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Indywidualne podejście</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Każdy projekt traktujemy indywidualnie, dostosowując 
+                            nasze metody do specyfiki instalacji.
+                        </p>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Terminowość</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dotrzymujemy ustalonych terminów, minimalizując 
+                            zakłócenia w funkcjonowaniu obiektu.
+                        </p>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Bezpieczeństwo</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Stosujemy bezpieczne metody i środki, 
+                            dbając o zdrowie użytkowników obiektów.
+                        </p>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Doświadczenie</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Wieloletnie doświadczenie w obsłudze różnych 
+                            typów obiektów i instalacji.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section class="py-20 lg:py-32 bg-gradient-to-br from-amb-light to-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-amb-text mb-4">
+                        Nasze <span class="text-amb-primary">usługi</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Kompleksowa obsługa instalacji wentylacyjno-klimatyzacyjnych
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Czyszczenie instalacji</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Profesjonalne czyszczenie kanałów wentylacyjnych 
+                            metodą mechaniczną.
+                        </p>
+                        <a href="uslugi.html#czyszczenie" class="text-amb-primary hover:text-amb-primary-dark font-semibold">
+                            Dowiedz się więcej →
+                        </a>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Inspekcja TV</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Dokładna inspekcja kamerami TV z pełną 
+                            dokumentacją foto i wideo.
+                        </p>
+                        <a href="uslugi.html#inspekcja" class="text-amb-primary hover:text-amb-primary-dark font-semibold">
+                            Dowiedz się więcej →
+                        </a>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Dezynfekcja</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Skuteczna dezynfekcja środkiem VIRUSOLVE+ 
+                            metodą zamgławiania.
+                        </p>
+                        <a href="uslugi.html#dezynfekcja" class="text-amb-primary hover:text-amb-primary-dark font-semibold">
+                            Dowiedz się więcej →
+                        </a>
+                    </div>
+                    
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Pomiary i konserwacja</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Regularne pomiary parametrów i konserwacje 
+                            instalacji HVAC.
+                        </p>
+                        <a href="uslugi.html" class="text-amb-primary hover:text-amb-primary-dark font-semibold">
+                            Dowiedz się więcej →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technology Section -->
+        <section class="py-20 bg-gradient-to-br from-amb-light to-white geometric-section" id="technologia">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                        Metoda czyszczenia <span class="text-amb-primary">kanałów wentylacyjnych</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                        Składa się z czterech podstawowych etapów zgodnie z normą <strong class="high-contrast-text">PN-EN 15780</strong>
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                    <!-- Lewa kolumna -->
+                    <div class="space-y-8">
+                        <!-- Etap 1 -->
+                        <div class="leaflet-card p-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="leaflet-icon flex-shrink-0">
+                                    <span class="text-2xl font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold high-contrast-text mb-3">Sprawdzenie stanu zanieczyszczenia instalacji</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Stan zanieczyszczenia instalacji sprawdzany jest przy użyciu kilku rodzajów kamer TV. 
+                                        Zdalne sterowanie robotą wyposażoną w dwie kamery, co pozwala na dokładne sprawdzenie 
+                                        każdego odcinka instalacji.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Etap 3 -->
+                        <div class="leaflet-card p-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="leaflet-icon flex-shrink-0">
+                                    <span class="text-2xl font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold high-contrast-text mb-3">Dezynfekcja</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Kolejnym etapem procesu czyszczenia jest dezynfekcja całego systemu. Środki chemiczne 
+                                        wprowadzane są do kanałów przy użyciu specjalnego urządzenia w postaci "mgły", 
+                                        co pozwala na dotarcie środka do każdego zakątka instalacji.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Prawa kolumna -->
+                    <div class="space-y-8">
+                        <!-- Etap 2 -->
+                        <div class="leaflet-card p-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="leaflet-icon flex-shrink-0">
+                                    <span class="text-2xl font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold high-contrast-text mb-3">Czyszczenie instalacji</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Pierwszym etapem procesu czyszczenia jest przygotowanie instalacji polegające na 
+                                        wykonaniu odpowiedniej ilości otworów rewizyjnych, które umożliwiają dokładne 
+                                        wyczyszczenie wszystkich elementów instalacji.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Etap 4 -->
+                        <div class="leaflet-card p-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="leaflet-icon flex-shrink-0">
+                                    <span class="text-2xl font-bold">4</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold high-contrast-text mb-3">Inspekcja powykonawcza</h3>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        Ostatnim etapem jest wykonanie inspekcji TV wyczyszczonych elementów instalacji 
+                                        co pozwala na porównanie z poprzednią inspekcją oraz na dokładne porównanie i 
+                                        określenie jakości wykonanej usługi.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sprzęt -->
+                <div class="mt-16 text-center">
+                    <div class="leaflet-card p-12 max-w-4xl mx-auto">
+                        <div class="leaflet-icon mx-auto mb-6">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold high-contrast-text mb-4">Profesjonalny sprzęt</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                            Wykorzystujemy najnowocześniejszy sprzęt firmy <strong class="high-contrast-text">Lifa Air Ltd</strong> 
+                            z Finlandii, który gwarantuje skuteczność na poziomie <strong class="high-contrast-text">99,97%</strong>
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-600">
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-check text-amb-primary" aria-hidden="true"></i>
+                                <span>Roboty inspekcyjne TV</span>
+                            </div>
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-check text-amb-primary" aria-hidden="true"></i>
+                                <span>Urządzenia czyszczące</span>
+                            </div>
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-check text-amb-primary" aria-hidden="true"></i>
+                                <span>Systemy dezynfekcji</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section class="py-20 bg-white" id="certyfikaty">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                        Nasze <span class="text-amb-primary">certyfikaty</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        Pracujemy zgodnie z najwyższymi standardami branżowymi
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- PN-EN 15780 -->
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold high-contrast-text mb-4">PN-EN 15780</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Europejska norma dotycząca <strong class="high-contrast-text">czyszczenia systemów wentylacyjnych</strong>. 
+                            Określa wymagania i metody czyszczenia instalacji HVAC.
+                        </p>
+                    </div>
+                    
+                    <!-- PN-EN 12097:2007 -->
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold high-contrast-text mb-4">PN-EN 12097:2007</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Norma dotycząca <strong class="high-contrast-text">systemów wentylacji w budynkach</strong>. 
+                            Określa wymagania dotyczące kanałów i elementów instalacji.
+                        </p>
+                    </div>
+                    
+                    <!-- Lifa Air Ltd -->
+                    <div class="leaflet-card p-8 text-center">
+                        <div class="leaflet-icon mx-auto">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold high-contrast-text mb-4">Lifa Air Ltd</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Autoryzowany partner <strong class="high-contrast-text">Lifa Air Ltd z Finlandii</strong>. 
+                            Wykorzystujemy najnowocześniejszy sprzęt do czyszczenia instalacji.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 lg:py-32 bg-image">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-amb-text mb-6">
+                        Gotowy na <span class="text-amb-primary">czystsze powietrze</span>?
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Skontaktuj się z nami już dziś i otrzymaj bezpłatną wycenę czyszczenia instalacji HVAC
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="kontakt.html#wycena" 
+                           class="bg-amb-primary hover:bg-amb-primary-dark text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:scale-105 inline-flex items-center justify-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>Zamów wycenę</span>
+                        </a>
+                        <a href="tel:+48668329473" 
+                           class="border-2 border-amb-primary text-amb-primary hover:bg-amb-primary hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl inline-flex items-center justify-center space-x-2">
+                            <i class="fas fa-phone"></i>
+                            <span>Zadzwoń teraz</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-amb-dark text-white py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-baseline space-x-1 mb-6">
+                        <span class="text-2xl font-bold text-amb-primary">AMB</span>
+                        <span class="text-lg font-light">SYSTEM</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Profesjonalna inspekcja i czyszczenie instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Usługi</h3>
+                    <ul class="space-y-3">
+                        <li><a href="uslugi.html#czyszczenie" class="text-gray-300 hover:text-amb-primary transition-colors">Czyszczenie instalacji</a></li>
+                        <li><a href="uslugi.html#inspekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Inspekcja TV</a></li>
+                        <li><a href="uslugi.html#dezynfekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Dezynfekcja</a></li>
+                        <li><a href="uslugi.html#pomiary" class="text-gray-300 hover:text-amb-primary transition-colors">Pomiary i testy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Firma</h3>
+                    <ul class="space-y-3">
+                        <li><a href="o-nas.html" class="text-gray-300 hover:text-amb-primary transition-colors">O nas</a></li>
+                        <li><a href="technologia.html" class="text-gray-300 hover:text-amb-primary transition-colors">Technologia</a></li>
+                        <li><a href="normy.html" class="text-gray-300 hover:text-amb-primary transition-colors">Normy i przepisy</a></li>
+                        <li><a href="kontakt.html" class="text-gray-300 hover:text-amb-primary transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Kontakt</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-amb-primary w-5"></i>
+                            <a href="tel:+48668329473" class="text-gray-300 hover:text-amb-primary transition-colors">+48 668 329 473</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-amb-primary w-5"></i>
+                            <a href="mailto:biuro@ambsystem.eu" class="text-gray-300 hover:text-amb-primary transition-colors">biuro@ambsystem.eu</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
+                            <span class="text-gray-300">ul. Wielicka 73/208, Kraków</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 AMB SYSTEM. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const isExpanded = !mobileMenu.classList.contains('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+            });
+            
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.setAttribute('aria-label', 'Otwórz menu nawigacji');
+        }
+        
+        // Smooth scrolling for anchor links on same page
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return; // Skip empty anchors
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

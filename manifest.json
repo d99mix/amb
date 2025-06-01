@@ -1,0 +1,119 @@
+{
+  "name": "AMB SYSTEM - Profesjonalna inspekcja i czyszczenie HVAC",
+  "short_name": "AMB SYSTEM",
+  "description": "Profesjonalna inspekcja i czyszczenie instalacji wentylacyjno-klimatyzacyjnych w Krakowie",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8dc63f",
+  "orientation": "portrait-primary",
+  "categories": ["business", "utilities"],
+  "lang": "pl",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "public/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "public/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "public/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Strona główna AMB SYSTEM"
+    },
+    {
+      "src": "public/screenshots/mobile-home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Strona główna AMB SYSTEM - mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "description": "Skontaktuj się z AMB SYSTEM",
+      "url": "/kontakt.html",
+      "icons": [
+        {
+          "src": "public/icons/contact-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Wycena",
+      "short_name": "Wycena",
+      "description": "Zamów bezpłatną wycenę",
+      "url": "/kontakt.html#wycena",
+      "icons": [
+        {
+          "src": "public/icons/quote-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Usługi",
+      "short_name": "Usługi",
+      "description": "Poznaj nasze usługi",
+      "url": "/uslugi.html",
+      "icons": [
+        {
+          "src": "public/icons/services-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+} 

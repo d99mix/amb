@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AMB SYSTEM - Poznaj naszą firmę. Doświadczenie, profesjonalizm i indywidualne podejście do każdego projektu.">
+    <meta name="keywords" content="AMB SYSTEM, o firmie, doświadczenie, Kraków, HVAC">
+    <title>O nas - AMB SYSTEM</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'amb-primary': '#8dc63f',
+                        'amb-primary-dark': '#5a8b2f',
+                        'amb-primary-light': '#a8d65a',
+                        'amb-accent': '#6ba82f',
+                        'amb-accent-light': '#9dd158',
+                        'amb-light': '#f5f8f5',
+                        'amb-dark': '#222222',
+                        'amb-text': '#333333',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in-left': 'fadeInLeft 0.6s ease-out',
+                        'fade-in-right': 'fadeInRight 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'counter': 'counter 2s ease-out',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        counter: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Custom CSS dla stylu zgodnego z ulotkami -->
+    <style>
+        /* === ZMIENNE CSS === */
+        :root {
+            --amb-primary: #8dc63f;
+            --amb-primary-dark: #6ba82f;
+            --amb-primary-light: #a8d65a;
+            --amb-text-dark: #2d3748;
+            --amb-border: #e2e8f0;
+        }
+
+        /* === PODSTAWOWE USTAWIENIA === */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        /* === TŁO ZDJĘCIOWE === */
+        .bg-image {
+            background-image: url('images/background-blur.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .bg-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1;
+        }
+
+        .bg-image > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* === KOMPONENTY === */
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .nature-hero {
+            background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nature-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+            transform: skewX(-15deg);
+        }
+
+        .leaflet-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(141, 198, 63, 0.1);
+            border: 1px solid var(--amb-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leaflet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+        }
+
+        .leaflet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(141, 198, 63, 0.15);
+        }
+
+        .leaflet-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .geometric-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+            border-radius: 50%;
+            opacity: 0.05;
+            transform: rotate(45deg);
+        }
+
+        .high-contrast-text {
+            color: var(--amb-text-dark);
+            font-weight: 500;
+        }
+
+        /* === RESPONSYWNOŚĆ === */
+        @media (max-width: 768px) {
+            .leaflet-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-amb-text antialiased">
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-effect border-b border-gray-200/20">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo - Left -->
+                <a href="index.html" class="flex items-baseline space-x-1 group">
+                    <span class="text-2xl lg:text-3xl font-bold text-amb-primary group-hover:text-amb-primary-dark transition-colors">AMB</span>
+                    <span class="text-lg lg:text-xl font-light text-amb-text">SYSTEM</span>
+                </a>
+                
+                <!-- Navigation - Center -->
+                <div class="hidden lg:flex items-center space-x-6 absolute left-1/2 transform -translate-x-1/2">
+                    <a href="index.html" class="text-amb-text hover:text-amb-primary transition-colors">Strona główna</a>
+                    <a href="o-nas.html" class="text-amb-primary font-medium border-b-2 border-amb-primary pb-1">O nas</a>
+                    <a href="uslugi.html" class="text-amb-text hover:text-amb-primary transition-colors">Usługi</a>
+                    <a href="technologia.html" class="text-amb-text hover:text-amb-primary transition-colors">Technologia</a>
+                    <a href="normy.html" class="text-amb-text hover:text-amb-primary transition-colors">Normy</a>
+                    <a href="kontakt.html" class="text-amb-text hover:text-amb-primary transition-colors">Kontakt</a>
+                </div>
+                
+                <!-- CTA Button - Right -->
+                <a href="kontakt.html#wycena" class="hidden lg:block bg-amb-primary hover:bg-amb-primary-dark text-white px-6 py-2.5 rounded-full font-medium transition-all hover:shadow-lg">
+                    Zamów wycenę
+                </a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Otwórz menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="lg:hidden hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Strona główna</a>
+                    <a href="o-nas.html" class="text-amb-primary font-medium py-2">O nas</a>
+                    <a href="uslugi.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Usługi</a>
+                    <a href="technologia.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Technologia</a>
+                    <a href="normy.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Normy</a>
+                    <a href="kontakt.html" class="text-amb-text hover:text-amb-primary transition-colors py-2">Kontakt</a>
+                    <a href="kontakt.html#wycena" class="bg-amb-primary text-white px-6 py-3 rounded-full font-medium text-center mt-4">
+                        Zamów wycenę
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="pt-16 lg:pt-20">
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-32 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/klima1.jpg');">
+            <!-- Dark overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+            <!-- Green overlay to maintain brand colors -->
+            <div class="absolute inset-0 bg-gradient-to-br from-amb-primary/30 via-amb-primary/20 to-amb-primary-dark/30"></div>
+            <!-- Decorative overlay -->
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent transform skew-x-12"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
+                        <span class="text-white">O nas</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl lg:text-2xl text-white/95 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                        Poznaj firmę AMB SYSTEM - Twojego partnera w czyszczeniu instalacji HVAC
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Company Section -->
+        <section class="py-20 lg:py-32 bg-image">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="animate-fade-in-left">
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-amb-text mb-6">
+                            AMB <span class="text-amb-primary">SYSTEM</span>
+                        </h2>
+                        <div class="bg-amb-light p-4 rounded-lg mb-6">
+                            <p class="font-semibold text-amb-text">ul. Wielicka 73/208, 30-552 Kraków</p>
+                        </div>
+                        
+                        <div class="leaflet-card p-8">
+                            <div class="leaflet-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold high-contrast-text mb-4">O firmie AMB SYSTEM</h3>
+                            <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+                                Jesteśmy firmą specjalizującą się w profesjonalnej inspekcji, czyszczeniu 
+                                i dezynfekcji instalacji wentylacyjno-klimatyzacyjnych. Nasze doświadczenie 
+                                i indywidualne podejście do każdego projektu gwarantują najwyższą jakość usług.
+                            </p>
+                            
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Obsługujemy różnorodne obiekty - od przemysłowych i handlowych, 
+                                po medyczne i publiczne. Każdy projekt traktujemy z należytą uwagą, 
+                                dostosowując nasze metody do specyfiki danej instalacji.
+                            </p>
+                            
+                            <p class="text-gray-600 leading-relaxed">
+                                Nasz zespół składa się z doświadczonych specjalistów, którzy na bieżąco 
+                                śledzą najnowsze trendy i technologie w branży HVAC. Dzięki temu możemy 
+                                oferować naszym klientom najefektywniejsze rozwiązania.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fade-in-right">
+                        <div class="bg-gradient-to-br from-amb-primary/10 to-amb-accent/10 rounded-3xl p-12 text-center hover-lift">
+                            <div class="w-24 h-24 bg-gradient-to-br from-amb-primary to-amb-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-building text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-amb-text mb-4">Siedziba firmy</h3>
+                            <p class="text-gray-600 text-lg">Kraków, Małopolska</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Values Section -->
+        <section class="py-20 lg:py-32 bg-amb-dark">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Nasze <span class="text-amb-primary">wartości</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                        Zasady, którymi kierujemy się w codziennej pracy
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-handshake text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Profesjonalizm</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Każdy projekt realizujemy z najwyższą starannością, 
+                            wykorzystując sprawdzone metody i nowoczesny sprzęt.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Indywidualne podejście</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Dostosowujemy nasze usługi do specyficznych potrzeb 
+                            każdego klienta i charakterystyki jego instalacji.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shield-alt text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Bezpieczeństwo</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Priorytetem jest bezpieczeństwo naszych pracowników 
+                            i użytkowników obiektów, w których pracujemy.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-leaf text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Ekologia</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Stosujemy ekologiczne środki czyszczące i metody 
+                            minimalizujące wpływ na środowisko naturalne.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-clock text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Terminowość</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Dotrzymujemy ustalonych terminów, minimalizując 
+                            zakłócenia w funkcjonowaniu Twojego obiektu.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 hover-lift group">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-chart-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-4">Ciągły rozwój</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Inwestujemy w najnowsze technologie i szkolenia, 
+                            aby oferować usługi na najwyższym poziomie.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section class="py-20 lg:py-32 bg-gradient-to-br from-amb-light to-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="animate-fade-in-left">
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-amb-text mb-6">
+                            Wieloletnie <span class="text-amb-primary">doświadczenie</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                            Przez lata działalności zrealizowaliśmy setki projektów 
+                            w różnych typach obiektów.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amb-primary to-amb-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-industry text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-amb-text mb-2">Obiekty przemysłowe</h3>
+                                    <p class="text-gray-600">Fabryki, zakłady produkcyjne, magazyny</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amb-primary to-amb-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-shopping-cart text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-amb-text mb-2">Obiekty handlowe</h3>
+                                    <p class="text-gray-600">Centra handlowe, sklepy, biurowce</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amb-primary to-amb-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-hospital text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-amb-text mb-2">Obiekty medyczne</h3>
+                                    <p class="text-gray-600">Szpitale, kliniki, przychodnie</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-amb-primary to-amb-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-university text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-amb-text mb-2">Obiekty publiczne</h3>
+                                    <p class="text-gray-600">Urzędy, szkoły, instytucje kultury</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="animate-fade-in-right">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white rounded-3xl p-8 text-center shadow-amb hover-lift">
+                                <div class="text-4xl font-bold text-amb-primary mb-2 counter" data-target="500">0</div>
+                                <div class="text-gray-600 font-medium">Zrealizowanych projektów</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-3xl p-8 text-center shadow-amb hover-lift">
+                                <div class="text-4xl font-bold text-amb-primary mb-2 counter" data-target="15">0</div>
+                                <div class="text-gray-600 font-medium">Lat doświadczenia</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-3xl p-8 text-center shadow-amb hover-lift">
+                                <div class="text-4xl font-bold text-amb-primary mb-2">
+                                    <span class="counter" data-target="100">0</span>%
+                                </div>
+                                <div class="text-gray-600 font-medium">Zadowolonych klientów</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-3xl p-8 text-center shadow-amb hover-lift">
+                                <div class="text-4xl font-bold text-amb-primary mb-2 counter" data-target="24">0</div>
+                                <div class="text-gray-600 font-medium">Godziny dostępności</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="py-20 lg:py-32 hero-gradient relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center text-white">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+                        Przekonaj się o naszej jakości
+                    </h2>
+                    <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                        Skontaktuj się z nami i poznaj nasze możliwości
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="kontakt.html#wycena" class="bg-white text-amb-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl hover:scale-105 inline-flex items-center justify-center space-x-2">
+                            <i class="fas fa-envelope"></i>
+                            <span>Zamów wycenę</span>
+                        </a>
+                        <a href="uslugi.html" class="border-2 border-white text-white hover:bg-white hover:text-amb-primary px-8 py-4 rounded-full font-semibold text-lg transition-all hover:shadow-xl inline-flex items-center justify-center space-x-2">
+                            <i class="fas fa-list"></i>
+                            <span>Zobacz usługi</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-amb-dark text-white py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-baseline space-x-1 mb-6">
+                        <span class="text-2xl font-bold text-amb-primary">AMB</span>
+                        <span class="text-lg font-light">SYSTEM</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Profesjonalna inspekcja i czyszczenie instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Usługi</h3>
+                    <ul class="space-y-3">
+                        <li><a href="uslugi.html#czyszczenie" class="text-gray-300 hover:text-amb-primary transition-colors">Czyszczenie instalacji</a></li>
+                        <li><a href="uslugi.html#inspekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Inspekcja TV</a></li>
+                        <li><a href="uslugi.html#dezynfekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Dezynfekcja</a></li>
+                        <li><a href="uslugi.html#pomiary" class="text-gray-300 hover:text-amb-primary transition-colors">Pomiary i testy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Firma</h3>
+                    <ul class="space-y-3">
+                        <li><a href="o-nas.html" class="text-gray-300 hover:text-amb-primary transition-colors">O nas</a></li>
+                        <li><a href="technologia.html" class="text-gray-300 hover:text-amb-primary transition-colors">Technologia</a></li>
+                        <li><a href="normy.html" class="text-gray-300 hover:text-amb-primary transition-colors">Normy i przepisy</a></li>
+                        <li><a href="kontakt.html" class="text-gray-300 hover:text-amb-primary transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-amb-primary mb-6">Kontakt</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-amb-primary w-5"></i>
+                            <a href="tel:+48668329473" class="text-gray-300 hover:text-amb-primary transition-colors">+48 668 329 473</a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-amb-primary w-5"></i>
+                            <a href="mailto:biuro@ambsystem.eu" class="text-gray-300 hover:text-amb-primary transition-colors">biuro@ambsystem.eu</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
+                            <span class="text-gray-300">ul. Wielicka 73/208, 30-552 Kraków</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 AMB SYSTEM. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                    
+                    // Trigger counter animation if this element contains counters
+                    if (entry.target.querySelector('.counter')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right').forEach(el => {
+            el.style.opacity = '0';
+            if (el.classList.contains('animate-fade-in-left')) {
+                el.style.transform = 'translateX(-30px)';
+            } else if (el.classList.contains('animate-fade-in-right')) {
+                el.style.transform = 'translateX(30px)';
+            } else {
+                el.style.transform = 'translateY(30px)';
+            }
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 
