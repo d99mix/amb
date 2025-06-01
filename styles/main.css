@@ -1,0 +1,178 @@
+/* ===========================
+   Zoptymalizowany CSS dla AMB SYSTEM
+   Tylko używane klasy - Design 2025
+   =========================== */
+
+:root {
+    /* Kolory główne */
+    --amb-primary: #8dc63f;
+    --amb-primary-dark: #6ba82f;
+    --amb-text-dark: #2d3748;
+    --amb-border: #e2e8f0;
+    
+    /* Transitions */
+    --transition-base: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Spacing */
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+}
+
+/* ===========================
+   Komponenty używane w HTML
+   =========================== */
+
+.glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.nature-hero {
+    background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.nature-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    transform: skewX(-15deg);
+}
+
+.nature-bg {
+    background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
+}
+
+.leaflet-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(141, 198, 63, 0.1);
+    border: 1px solid var(--amb-border);
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.leaflet-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+}
+
+.leaflet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(141, 198, 63, 0.15);
+}
+
+.leaflet-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.leaflet-form {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(141, 198, 63, 0.1);
+    border: 2px solid var(--amb-border);
+    position: relative;
+}
+
+.leaflet-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.leaflet-btn {
+    background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.leaflet-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(141, 198, 63, 0.3);
+}
+
+.geometric-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.geometric-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
+    border-radius: 50%;
+    opacity: 0.05;
+    transform: rotate(45deg);
+}
+
+.high-contrast-text {
+    color: var(--amb-text-dark);
+    font-weight: 500;
+}
+
+.high-contrast-link {
+    color: var(--amb-primary-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.high-contrast-link:hover {
+    color: var(--amb-text-dark);
+    text-decoration-thickness: 3px;
+}
+
+/* ===========================
+   Responsywność
+   =========================== */
+@media (max-width: 768px) {
+    .leaflet-form {
+        padding: 24px;
+        margin: 16px;
+    }
+    
+    .leaflet-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+} 
