@@ -83,183 +83,8 @@
     <!-- Ikony -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Custom CSS dla stylu zgodnego z ulotkami -->
-    <style>
-        /* === ZMIENNE CSS === */
-        :root {
-            --amb-primary: #8dc63f;
-            --amb-primary-dark: #6ba82f;
-            --amb-text-dark: #2d3748;
-            --amb-border: #e2e8f0;
-        }
-
-        /* === PODSTAWOWE USTAWIENIA === */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        /* === TŁO ZDJĘCIOWE === */
-        .bg-image {
-            background-image: url('images/background-blur.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-
-        .bg-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 1;
-        }
-
-        .bg-image > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* === KOMPONENTY === */
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .nature-bg {
-            background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
-        }
-
-        .leaflet-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(141, 198, 63, 0.1);
-            border: 1px solid var(--amb-border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .leaflet-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-        }
-
-        .leaflet-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(141, 198, 63, 0.15);
-        }
-
-        .leaflet-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .leaflet-form {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 8px 32px rgba(141, 198, 63, 0.1);
-            border: 2px solid var(--amb-border);
-            position: relative;
-        }
-
-        .leaflet-form::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            border-radius: 16px 16px 0 0;
-        }
-
-        .leaflet-btn {
-            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .leaflet-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(141, 198, 63, 0.3);
-        }
-
-        .geometric-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .geometric-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            border-radius: 50%;
-            opacity: 0.05;
-            transform: rotate(45deg);
-        }
-
-        .high-contrast-text {
-            color: var(--amb-text-dark);
-            font-weight: 500;
-        }
-
-        .high-contrast-link {
-            color: var(--amb-primary-dark);
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 3px;
-        }
-
-        .high-contrast-link:hover {
-            color: var(--amb-text-dark);
-            text-decoration-thickness: 3px;
-        }
-
-        /* === RESPONSYWNOŚĆ === */
-        @media (max-width: 768px) {
-            .leaflet-form {
-                padding: 24px;
-                margin: 16px;
-            }
-            
-            .leaflet-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-    </style>
+    <!-- Wspólne style CSS -->
+    <link rel="stylesheet" href="styles/site.css">
 </head>
 <body class="font-sans text-amb-text antialiased">
     
@@ -317,28 +142,28 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-16 lg:pt-20">
         <!-- Hero Section -->
-        <section class="nature-bg py-24 lg:py-32 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-amb-primary/90 via-amb-primary/80 to-amb-primary-dark/90"></div>
+        <section class="py-24 lg:py-32 relative overflow-hidden" style="background-image: url('images/contact-us-girl.jpg'); background-size: 100%; background-position: center top; background-repeat: no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/60"></div>
             <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent transform skew-x-12"></div>
             
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
                         Kontakt
                         <span class="block text-2xl lg:text-3xl font-light text-white/90 mt-2">
                             AMB SYSTEM
                         </span>
                     </h1>
-                    <p class="text-xl lg:text-2xl text-white/95 mb-8 leading-relaxed max-w-3xl mx-auto">
+                    <p class="text-xl lg:text-2xl text-white/95 mb-8 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
                         Skontaktuj się z nami i otrzymaj profesjonalną pomoc w zakresie instalacji HVAC
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:+48668329473" 
-                           class="leaflet-btn inline-flex items-center justify-center space-x-2 text-lg px-8 py-4 bg-white text-amb-primary hover:bg-gray-50 focus:ring-4 focus:ring-white/30"
-                           aria-label="Zadzwoń pod numer +48 668 329 473">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <span>+48 668 329 473</span>
-                        </a>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.4s">
+                         <a href="#telefon" 
+                             class="leaflet-btn inline-flex items-center justify-center space-x-2 text-lg px-8 py-4 text-white focus:ring-4 focus:ring-white/30"
+                             aria-label="Zadzwoń pod numer +48 668 329 473">
+                              <i class="fas fa-phone" aria-hidden="true"></i>
+                             <span>Zadzwoń teraz</span>
+                          </a>
                         <a href="#wycena" 
                            class="leaflet-btn inline-flex items-center justify-center space-x-2 text-lg px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-amb-primary focus:ring-4 focus:ring-white/30"
                            aria-label="Przejdź do formularza wyceny">
@@ -354,17 +179,17 @@
         <section class="py-20 bg-gradient-to-br from-gray-50 to-white geometric-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4 animate-fade-in-up">
                         Dane kontaktowe
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
                         Skontaktuj się z nami w dogodny dla Ciebie sposób
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                     <!-- Dane kontaktowe -->
-                    <div class="space-y-8">
+                    <div class="space-y-8 animate-fade-in-left">
                         <div class="leaflet-card p-8">
                             <div class="leaflet-icon">
                                 <i class="fas fa-building" aria-hidden="true"></i>
@@ -383,11 +208,16 @@
                             <h3 class="text-xl font-semibold high-contrast-text mb-2">Adres</h3>
                             <address class="text-gray-600 leading-relaxed not-italic">
                                 ul. Wielicka 73/208<br>
-                                30-552 Kraków
+                                30-552 Kraków <br>
+                                <br>
+                                <h3 class="text-xl font-semibold high-contrast-text mb-2">Oddział</h3>
+                                ul. Śniadeckich 8/11<br>
+                                Nowy Sącz 33-300
                             </address>
+                            
                         </div>
                         
-                        <div class="leaflet-card p-8">
+                        <div id="telefon" class="leaflet-card p-8">
                             <div class="leaflet-icon">
                                 <i class="fas fa-phone" aria-hidden="true"></i>
                             </div>
@@ -396,8 +226,15 @@
                                 <a href="tel:+48668329473" 
                                    class="high-contrast-link text-lg font-medium hover:text-amb-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded"
                                    aria-label="Zadzwoń pod numer +48 668 329 473">
-                                    +48 668 329 473
+                                    +48 668 329 473 
                                 </a>
+                            </p>
+                            <p>
+                            <a href="tel:+48881640840" 
+                                   class="high-contrast-link text-lg font-medium hover:text-amb-primary-dark transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded"
+                                   aria-label="Zadzwoń pod numer +48 881 640 840">
+                                +48 881 640 840
+                            </a>
                             </p>
                         </div>
                         
@@ -421,9 +258,7 @@
                             </div>
                             <h3 class="text-xl font-semibold high-contrast-text mb-2">Godziny pracy</h3>
                             <div class="text-gray-600 leading-relaxed space-y-1">
-                                <p><strong class="high-contrast-text">Poniedziałek - Piątek:</strong> 8:00 - 18:00</p>
-                                <p><strong class="high-contrast-text">Sobota:</strong> 9:00 - 14:00</p>
-                                <p><strong class="high-contrast-text">Niedziela:</strong> zamknięte</p>
+                                <p><strong class="high-contrast-text">Poniedziałek - Piątek:</strong> 8:00 - 16:00</p>
                             </div>
                         </div>
                         
@@ -433,34 +268,51 @@
                             </div>
                             <h3 class="text-xl font-semibold high-contrast-text mb-2">Obszar działania</h3>
                             <div class="text-gray-600 leading-relaxed space-y-1">
-                                <p>• Kraków i okolice</p>
-                                <p>• Małopolska</p>
-                                <p>• Cała Polska (większe projekty)</p>
-                            </div>
+                                <p>• Teren całego kraju</p>
+                                </div>
                         </div>
                     </div>
                     
                     <!-- Mapa -->
-                    <div class="leaflet-card p-8">
-                        <h3 class="text-2xl font-semibold high-contrast-text mb-4">Nasza lokalizacja</h3>
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Znajdziesz nas w centrum Krakowa przy ulicy Wielickiej. 
-                            Dogodna lokalizacja z łatwym dostępem komunikacyjnym.
+                    <div class="leaflet-card p-8 space-y-8 animate-fade-in-right">
+                        <h3 class="text-2xl font-semibold high-contrast-text">Nasza lokalizacja</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                          Znajdziesz nas w centrum Krakowa przy ulicy Wielickiej. 
+                          Dogodna lokalizacja z łatwym dostępem komunikacyjnym.
                         </p>
-                        <div class="rounded-lg overflow-hidden shadow-lg">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.8234567890123!2d19.9445!3d50.0647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e0e0e0e0e%3A0x0e0e0e0e0e0e0e0e!2sWielicka%2073%2C%2030-552%20Krak%C3%B3w!5e0!3m2!1spl!2spl!4v1234567890123!5m2!1spl!2spl"
-                                width="100%" 
-                                height="400" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="Mapa lokalizacji AMB SYSTEM, ul. Wielicka 73/208, Kraków"
-                                class="w-full h-96">
-                            </iframe>
+                      
+                        <!-- Główna siedziba -->
+                        <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200 p-6 mb-8">
+                          <h4 class="text-2xl font-semibold mb-4 high-contrast-text">Główna siedziba – Kraków</h4>
+                          <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.8234567890123!2d19.9445!3d50.0647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165b0e0e0e0e0e%3A0x0e0e0e0e0e0e0e0e!2sWielicka%2073%2C%2030-552%20Krak%C3%B3w!5e0!3m2!1spl!2spl!4v1234567890123!5m2!1spl!2spl"
+                            width="100%" 
+                            height="600" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa lokalizacji: Kraków"
+                            class="w-full rounded-lg">
+                          </iframe>
                         </div>
-                    </div>
+                      
+                        <!-- Oddział -->
+                        <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200 p-6">
+                          <h4 class="text-2xl font-semibold mb-4 high-contrast-text">Oddział – Nowy Sącz</h4>
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.1234567890123!2d20.7000!3d49.6200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715f0e0e0e0e0e%3A0x0e0e0e0e0e0e0e0e!2s%C5%9Aniadeckich%208%2C%2033-300%20Nowy%20S%C4%85cz!5e0!3m2!1spl!2spl!4v1234567890123!5m2!1spl!2spl"
+                            width="100%"
+                            height="600"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa lokalizacji: Nowy Sącz"
+                            class="w-full rounded-lg">
+                          </iframe>
+                        </div>
+                      </div>
                 </div>
             </div>
         </section>
@@ -469,16 +321,16 @@
         <section id="wycena" class="py-20 bg-gradient-to-br from-amb-light to-white geometric-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4 animate-fade-in-up">
                         Zamów bezpłatną wycenę
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
                         Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin. 
                         Wszystkie dane są przetwarzane zgodnie z RODO.
                     </p>
                 </div>
                 
-                <div class="max-w-4xl mx-auto">
+                <div class="max-w-4xl mx-auto animate-fade-in-up" style="animation-delay: 0.3s">
                     <form class="leaflet-form" id="quoteForm" novalidate>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div class="form-group">
@@ -561,13 +413,12 @@
                                     required
                                     aria-describedby="service-error">
                                     <option value="">Wybierz usługę</option>
-                                    <option value="czyszczenie">Czyszczenie instalacji wentylacyjnej</option>
+                                    <option value="czyszczenie">Kompleskowe czyszczenie instalacji wentylacyjnej</option>
                                     <option value="inspekcja">Inspekcja TV</option>
                                     <option value="dezynfekcja">Dezynfekcja</option>
                                     <option value="pomiary">Pomiary i konserwacja</option>
-                                    <option value="pompy-ciepla">Instalacje pomp ciepła</option>
-                                    <option value="hydraulika">Instalacje hydrauliczne</option>
-                                    <option value="fotowoltaika">Instalacje fotowoltaiczne</option>
+                                    <option value="pompy-ciepla">Pompa ciepła</option>
+                                    <option value="klimatyzacja">Klimatyzacja</option>
                                     <option value="inne">Inne</option>
                                 </select>
                                 <div id="service-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></div>
@@ -657,19 +508,19 @@
         </section>
         
         <!-- Sekcja Szybki kontakt -->
-        <section class="py-20 bg-image geometric-section">
+        <section class="py-20 lg:py-32 bg-image">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4 animate-fade-in-up">
                         Szybki kontakt
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-12 animate-fade-in-up" style="animation-delay: 0.2s">
                         Wybierz najwygodniejszy dla Ciebie sposób kontaktu
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-left">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-phone" aria-hidden="true"></i>
                         </div>
@@ -677,15 +528,17 @@
                         <p class="text-gray-600 mb-6 leading-relaxed">
                             Porozmawiaj z naszym ekspertem i otrzymaj natychmiastową pomoc
                         </p>
-                        <a href="tel:+48668329473" 
-                           class="leaflet-btn inline-flex items-center justify-center space-x-2 px-6 py-3 focus:ring-4 focus:ring-amb-primary/30"
-                           aria-label="Zadzwoń pod numer +48 668 329 473">
-                            <i class="fas fa-phone" aria-hidden="true"></i>
-                            <span>+48 668 329 473</span>
-                        </a>
+                        <div class="space-y-3">
+                                <a href="kontakt.html#telefon" 
+                                 class="leaflet-btn inline-flex items-center justify-center space-x-2 px-6 py-3 focus:ring-4 focus:ring-amb-primary/30"
+                                 aria-label="Przejdź do sekcji z numerami telefonów">
+                                <i class="fas fa-phone" aria-hidden="true"></i>
+                                <span>Zadzwoń</span>
+                            </a>
+                        </div>
                     </div>
                     
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-up" style="animation-delay: 0.1s">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </div>
@@ -701,7 +554,7 @@
                         </a>
                     </div>
                     
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-right" style="animation-delay: 0.2s">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
                         </div>
@@ -724,16 +577,16 @@
         <section class="py-20 bg-gradient-to-br from-amb-light to-white geometric-section">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4 animate-fade-in-up">
                         Często zadawane pytania
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
                         Odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług
                     </p>
                 </div>
                 
                 <div class="max-w-4xl mx-auto space-y-4">
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.1s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -747,7 +600,7 @@
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.2s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -756,12 +609,12 @@
                         </button>
                         <div class="faq-answer hidden px-6 pb-6">
                             <p class="text-gray-600 leading-relaxed">
-                                Czas czyszczenia zależy od wielkości i złożoności instalacji. Typowo proces trwa od kilku godzin do 2-3 dni dla większych obiektów. Dokładny czas zostanie określony po inspekcji wstępnej. <strong class="high-contrast-text">Małe biura:</strong> 4-8 godzin, <strong class="high-contrast-text">średnie obiekty:</strong> 1-2 dni, <strong class="high-contrast-text">duże kompleksy:</strong> 3-5 dni.
+                                Proces czyszczenia uzależniony jest od specyfiki budynku oraz skomplikowania instalacji. Usługa wykonywana jest w sposób elastyczny dostosowany do wymagań inwestora, nieuciążliwy dla personelu.
                             </p>
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.3s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -775,7 +628,7 @@
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.4s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -789,7 +642,7 @@
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.5s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -803,7 +656,7 @@
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.6s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -817,7 +670,7 @@
                         </div>
                     </div>
                     
-                    <div class="leaflet-card">
+                    <div class="leaflet-card animate-fade-in-up" style="animation-delay: 0.7s">
                         <button class="w-full text-left p-6 flex items-center justify-between high-contrast-text font-semibold text-lg hover:text-amb-primary transition-colors focus:outline-none focus:ring-2 focus:ring-amb-primary focus:ring-offset-2 rounded-lg" 
                                 aria-expanded="false"
                                 onclick="toggleFAQ(this)">
@@ -826,7 +679,7 @@
                         </button>
                         <div class="faq-answer hidden px-6 pb-6">
                             <p class="text-gray-600 leading-relaxed">
-                                Tak, dostosowujemy się do potrzeb klientów. Możemy pracować w weekendy, święta i godzinach nocnych, szczególnie w obiektach, które nie mogą być wyłączone z użytkowania w dni robocze. Usługi w godzinach nietypowych mogą wiązać się z dodatkową opłatą.
+                                Tak, dostosowujemy się do potrzeb klientów. Możemy pracować w weekendy, święta i godzinach nocnych, szczególnie w obiektach, które nie mogą być wyłączone z użytkowania w dni robocze.
                             </p>
                         </div>
                     </div>
@@ -835,19 +688,19 @@
         </section>
         
         <!-- Sekcja Certyfikaty i normy -->
-        <section class="py-20 bg-image geometric-section">
+        <section class="py-20 lg:py-32 bg-image">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4">
+                <div class="max-w-4xl mx-auto mb-12 text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold high-contrast-text mb-4 animate-fade-in-up">
                         Certyfikaty i normy
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
                         Pracujemy zgodnie z najwyższymi standardami branżowymi
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-left">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-certificate" aria-hidden="true"></i>
                         </div>
@@ -857,7 +710,7 @@
                         </p>
                     </div>
                     
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-up" style="animation-delay: 0.1s">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-shield-alt" aria-hidden="true"></i>
                         </div>
@@ -867,7 +720,7 @@
                         </p>
                     </div>
                     
-                    <div class="leaflet-card p-8 text-center">
+                    <div class="leaflet-card p-8 text-center animate-fade-in-right" style="animation-delay: 0.2s">
                         <div class="leaflet-icon mx-auto">
                             <i class="fas fa-microscope" aria-hidden="true"></i>
                         </div>
@@ -891,19 +744,16 @@
                         <span class="text-lg font-light">SYSTEM</span>
                     </div>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Profesjonalna inspekcja i czyszczenie instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
+                        Profesjonalna czyszczenie i dezynfekcja instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                    </div>
+                    </div> 
                 </div>
                 
                 <div>
@@ -939,7 +789,11 @@
                         </div>
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
-                            <span class="text-gray-300">ul. Wielicka 73/208, 30-552 Kraków</span>
+                            <a href="https://maps.google.com/?q=ul.+Wielicka+73/208,+Kraków+30-552" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">ul. Wielicka 73/208, Kraków 30-552</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
+                            <a href="https://www.google.com/maps/place/AMB+System+Centrum+Klimatyzacji+Nowy+S%C4%85cz/@49.6171643,20.7019722,85m/data=!3m1!1e3!4m14!1m7!3m6!1s0x473de537f058a38d:0xcb6159b46a26f0c6!2s%C5%9Aniadeckich+8%2F11,+33-300+Nowy+S%C4%85cz!3b1!8m2!3d49.6172592!4d20.7019869!3m5!1s0x471644ab4536037f:0x21ae9d8586e87111!8m2!3d49.6171328!4d20.7022399!16s%2Fg%2F1tj7v3f5?entry=ttu&g_ep=EgoyMDI1MDYwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">odział ul. Śniadeckich 8/11 Nowy Sącz 33-300</a>
                         </div>
                     </div>
                 </div>
@@ -950,6 +804,7 @@
             </div>
         </div>
     </footer>
+    
     
     <!-- Enhanced JavaScript -->
     <script src="scripts/enhanced.js"></script>
@@ -1072,6 +927,48 @@
                         });
                     }
                 }
+            });
+        });
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial state for animated elements
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up, .animate-fade-in-left, .animate-fade-in-right');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                if (element.classList.contains('animate-fade-in-up')) {
+                    element.style.transform = 'translateY(30px)';
+                } else if (element.classList.contains('animate-fade-in-left')) {
+                    element.style.transform = 'translateX(-30px)';
+                } else if (element.classList.contains('animate-fade-in-right')) {
+                    element.style.transform = 'translateX(30px)';
+                }
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            });
+
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        const delay = element.style.animationDelay || '0s';
+                        
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0) translateX(0)';
+                        }, parseFloat(delay) * 1000);
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all animated elements
+            animatedElements.forEach(element => {
+                observer.observe(element);
             });
         });
     </script>

@@ -68,73 +68,8 @@
     <!-- Ikony -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Custom CSS -->
-    <style>
-        /* === PODSTAWOWE USTAWIENIA === */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        /* === TŁO ZDJĘCIOWE === */
-        .bg-image {
-            background-image: url('images/background-blur.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-
-        .bg-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 1;
-        }
-
-        .bg-image > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* === KOMPONENTY === */
-        .gradient-bg {
-            background: linear-gradient(135deg, #f5f8f5 0%, #ffffff 50%, #f0f4f0 100%);
-        }
-
-        .hero-gradient {
-            background: linear-gradient(135deg, #8dc63f 0%, #6ba82f 100%);
-        }
-
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #333333 0%, #8dc63f 70%, #6ba82f 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .shadow-amb {
-            box-shadow: 0 10px 25px -5px rgba(141, 198, 63, 0.1), 0 4px 6px -2px rgba(141, 198, 63, 0.05);
-        }
-
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(141, 198, 63, 0.2);
-        }
-    </style>
+    <!-- Wspólne style CSS -->
+    <link rel="stylesheet" href="styles/site.css">
 </head>
 <body class="font-sans text-amb-text antialiased">
     
@@ -190,27 +125,17 @@
     
     <!-- Main Content -->
     <main id="main-content" class="pt-16 lg:pt-20">
-        <!-- Hero Section -->
-        <section class="relative py-20 lg:py-32 gradient-bg overflow-hidden">
-            <!-- Background Pattern -->
-            <div class="absolute inset-0 opacity-5">
-                <svg class="w-full h-full" viewBox="0 0 1200 800" fill="none">
-                    <path d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z" fill="url(#hero-gradient)"/>
-                    <defs>
-                        <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#8dc63f"/>
-                            <stop offset="100%" style="stop-color:#6ba82f"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
-            
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
-                        <span class="text-gradient">Nasze usługi</span>
+            <!-- Hero Section -->
+            <section class="py-24 lg:py-32 relative overflow-hidden min-h-[520px] flex items-center justify-center text-center" style="background-image: url('images/glowna-strona.jpg'); background-size: cover; background-position: center 30%; background-repeat: no-repeat;">
+                <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent transform skew-x-12"></div>
+                
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+                        <span class="text-white">Nasze usługi</span>
                     </h1>
-                    <p class="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                    <p class="text-xl lg:text-2xl text-white/95 mb-8 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
                         Kompleksowa obsługa instalacji wentylacyjno-klimatyzacyjnych
                     </p>
                 </div>
@@ -264,7 +189,7 @@
                         </div>
                         <h3 class="text-2xl font-semibold text-amb-text mb-4">Dezynfekcja</h3>
                         <p class="text-gray-600 mb-6 leading-relaxed">
-                            Skuteczna dezynfekcja środkiem VIRUSOLVE+ metodą zamgławiania dla maksymalnej higieny
+                            Skuteczna dezynfekcja środkiem metodą zamgławiania dla maksymalnej higieny
                         </p>
                         <a href="#dezynfekcja" class="inline-flex items-center space-x-2 text-amb-primary hover:text-amb-primary-dark font-semibold group-hover:translate-x-2 transition-all">
                             <span>Dowiedz się więcej</span>
@@ -303,23 +228,35 @@
                                     <ul class="space-y-3">
                                         <li class="flex items-start space-x-3">
                                             <i class="fas fa-check text-amb-primary mt-1"></i>
-                                            <span class="text-gray-600">Czyszczenie kanałów wentylacyjnych</span>
+                                            <span class="text-gray-600">Czyszczenie i dezynfekcja central i kanałów wentylacyjnych </span>
                                         </li>
+                                       
                                         <li class="flex items-start space-x-3">
                                             <i class="fas fa-check text-amb-primary mt-1"></i>
-                                            <span class="text-gray-600">Usuwanie zanieczyszczeń i osadów</span>
+                                            <span class="text-gray-600">Dezynfekcja profesjonalnymi środkami biobójczymi</span>
                                         </li>
-                                        <li class="flex items-start space-x-3">
-                                            <i class="fas fa-check text-amb-primary mt-1"></i>
-                                            <span class="text-gray-600">Dezynfekcja środkiem VIRUSOLVE+</span>
-                                        </li>
-                                        <li class="flex items-start space-x-3">
-                                            <i class="fas fa-check text-amb-primary mt-1"></i>
-                                            <span class="text-gray-600">Czyszczenie elementów instalacji</span>
-                                        </li>
+                    
                                         <li class="flex items-start space-x-3">
                                             <i class="fas fa-check text-amb-primary mt-1"></i>
                                             <span class="text-gray-600">Kontrola szczelności połączeń</span>
+                                        <li class="flex items-start space-x-3">
+                                            <i class="fas fa-check text-amb-primary mt-1"></i>
+                                            <span class="text-gray-600">Dostawa, wymiana filtrow wstepnych, absolutnych (HEPA)</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <i class="fas fa-check text-amb-primary mt-1"></i>
+                                            <span class="text-gray-600">Badania mikrobiologiczne instalacji, metoda odciskowa i zderzeniowa (wspolpraca z akredytowanym laboratorium)</span>
+                                        </li>
+                                        </li>
+                                        
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <i class="fas fa-check text-amb-primary mt-1"></i>
+                                            <span class="text-gray-600">Badania czystosci kanalow wentylacyjnych. ocena grawimetryczna w oparciu o norme PN-EN 15-780:2011E</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <i class="fas fa-check text-amb-primary mt-1"></i>
+                                            <span class="text-gray-600">Walidacja filtrow oraz pomiary skutecznosci wentylacji</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -482,11 +419,11 @@
                     </div>
                     
                     <div class="animate-fade-in-right">
-                        <div class="bg-gradient-to-br from-amb-primary/10 to-amb-accent/10 rounded-3xl p-12 text-center hover-lift">
+                        <div class="bg-white rounded-3xl p-12 text-center hover-lift shadow-lg border border-gray-100">
                             <div class="w-24 h-24 bg-gradient-to-br from-amb-primary to-amb-accent rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-shield-virus text-3xl text-white"></i>
                             </div>
-                            <h3 class="text-2xl font-semibold text-amb-text mb-4">Dezynfekcja VIRUSOLVE+</h3>
+                            <h3 class="text-2xl font-semibold text-amb-text mb-4">Dezynfekcja</h3>
                             <p class="text-gray-600 text-lg">99,97% skuteczności w eliminacji patogenów</p>
                         </div>
                     </div>
@@ -533,10 +470,9 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                             <i class="fas fa-wrench text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-amb-text mb-4">Instalacje hydrauliczne</h3>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Montaż i serwis urzadzen klimatyzacyjnych</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            Kompleksowe usługi hydrauliczne - od projektowania 
-                            po montaż i serwis.
+                            Kompleksowe usługi w zakresie projektowania, doradztwa i montazu.
                         </p>
                     </div>
                     
@@ -544,10 +480,18 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                             <i class="fas fa-solar-panel text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-semibold text-amb-text mb-4">Instalacje fotowoltaiczne</h3>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Montaż ukladow wentylacji i rekuperacji</h3>
                         <p class="text-gray-600 leading-relaxed">
-                            Montaż i serwis instalacji fotowoltaicznych 
-                            dla oszczędności energii.
+                            Profesjonalny projekt, doradztwo i montaz.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-amb hover-lift group text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-amb-primary to-amb-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-solar-panel text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-amb-text mb-4">Montaż układów wentylacji i rekuperacji</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Profesjonalny projekt, doradztwo i montaż.
                         </p>
                     </div>
                 </div>
@@ -628,28 +572,25 @@
                         <span class="text-lg font-light">SYSTEM</span>
                     </div>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Profesjonalna inspekcja i czyszczenie instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
+                        Profesjonalna czyszczenie i dezynfekcja instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                    </div>
+                    </div> 
                 </div>
                 
                 <div>
                     <h3 class="text-lg font-semibold text-amb-primary mb-6">Usługi</h3>
                     <ul class="space-y-3">
-                        <li><a href="#czyszczenie" class="text-gray-300 hover:text-amb-primary transition-colors">Czyszczenie instalacji</a></li>
-                        <li><a href="#inspekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Inspekcja TV</a></li>
-                        <li><a href="#dezynfekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Dezynfekcja</a></li>
-                        <li><a href="#pomiary" class="text-gray-300 hover:text-amb-primary transition-colors">Pomiary i testy</a></li>
+                        <li><a href="uslugi.html#czyszczenie" class="text-gray-300 hover:text-amb-primary transition-colors">Czyszczenie instalacji</a></li>
+                        <li><a href="uslugi.html#inspekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Inspekcja TV</a></li>
+                        <li><a href="uslugi.html#dezynfekcja" class="text-gray-300 hover:text-amb-primary transition-colors">Dezynfekcja</a></li>
+                        <li><a href="uslugi.html#pomiary" class="text-gray-300 hover:text-amb-primary transition-colors">Pomiary i testy</a></li>
                     </ul>
                 </div>
                 
@@ -676,7 +617,11 @@
                         </div>
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
-                            <span class="text-gray-300">ul. Wielicka 73/208, 30-552 Kraków</span>
+                            <a href="https://maps.google.com/?q=ul.+Wielicka+73/208,+Kraków+30-552" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">ul. Wielicka 73/208, Kraków 30-552</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
+                            <a href="https://www.google.com/maps/place/AMB+System+Centrum+Klimatyzacji+Nowy+S%C4%85cz/@49.6171643,20.7019722,85m/data=!3m1!1e3!4m14!1m7!3m6!1s0x473de537f058a38d:0xcb6159b46a26f0c6!2s%C5%9Aniadeckich+8%2F11,+33-300+Nowy+S%C4%85cz!3b1!8m2!3d49.6172592!4d20.7019869!3m5!1s0x471644ab4536037f:0x21ae9d8586e87111!8m2!3d49.6171328!4d20.7022399!16s%2Fg%2F1tj7v3f5?entry=ttu&g_ep=EgoyMDI1MDYwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">odział ul. Śniadeckich 8/11 Nowy Sącz 33-300</a>
                         </div>
                     </div>
                 </div>
@@ -687,6 +632,7 @@
             </div>
         </div>
     </footer>
+    
     
     <!-- JavaScript -->
     <script>

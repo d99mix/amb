@@ -73,142 +73,8 @@
     <!-- Ikony -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- Custom CSS dla stylu zgodnego z ulotkami -->
-    <style>
-        /* === ZMIENNE CSS === */
-        :root {
-            --amb-primary: #8dc63f;
-            --amb-primary-dark: #6ba82f;
-            --amb-primary-light: #a8d65a;
-            --amb-text-dark: #2d3748;
-            --amb-border: #e2e8f0;
-        }
-
-        /* === PODSTAWOWE USTAWIENIA === */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        /* === TŁO ZDJĘCIOWE === */
-        .bg-image {
-            background-image: url('images/background-blur.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-
-        .bg-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 1;
-        }
-
-        .bg-image > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* === KOMPONENTY === */
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        .nature-hero {
-            background: linear-gradient(135deg, rgba(141, 198, 63, 0.9) 0%, rgba(107, 168, 47, 0.9) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nature-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-            transform: skewX(-15deg);
-        }
-
-        .leaflet-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(141, 198, 63, 0.1);
-            border: 1px solid var(--amb-border);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .leaflet-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-        }
-
-        .leaflet-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(141, 198, 63, 0.15);
-        }
-
-        .leaflet-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .geometric-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .geometric-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--amb-primary) 0%, var(--amb-primary-dark) 100%);
-            border-radius: 50%;
-            opacity: 0.05;
-            transform: rotate(45deg);
-        }
-
-        .high-contrast-text {
-            color: var(--amb-text-dark);
-            font-weight: 500;
-        }
-
-        /* === RESPONSYWNOŚĆ === */
-        @media (max-width: 768px) {
-            .leaflet-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-    </style>
+    <!-- Wspólne style CSS -->
+    <link rel="stylesheet" href="styles/site.css">
 </head>
 <body class="font-sans text-amb-text antialiased">
     
@@ -265,26 +131,21 @@
     <!-- Main Content -->
     <main id="main-content" class="pt-16 lg:pt-20">
         <!-- Hero Section -->
-        <section class="relative py-20 lg:py-32 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/klima1.jpg');">
-            <!-- Dark overlay for text readability -->
-            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
-            <!-- Green overlay to maintain brand colors -->
-            <div class="absolute inset-0 bg-gradient-to-br from-amb-primary/30 via-amb-primary/20 to-amb-primary-dark/30"></div>
-            <!-- Decorative overlay -->
-            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent transform skew-x-12"></div>
+        <section class="py-24 lg:py-32 relative overflow-hidden min-h-[520px] flex items-center justify-center text-center" style="background-image: url('images/klima1.jpg'); background-size: 100%; background-position: center 42%; background-repeat: no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/60"></div>
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/10 to-transparent transform skew-x-12"></div>
             
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
-                        <span class="text-white">O nas</span>
+                    <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight animate-fade-in-up">
+                        O nas
                     </h1>
-                    <p class="text-lg sm:text-xl lg:text-2xl text-white/95 mb-8 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                    <p class="text-xl lg:text-2xl text-white/95 mb-8 leading-relaxed max-w-3xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
                         Poznaj firmę AMB SYSTEM - Twojego partnera w czyszczeniu instalacji HVAC
                     </p>
                 </div>
             </div>
         </section>
-        
         <!-- About Company Section -->
         <section class="py-20 lg:py-32 bg-image">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -323,12 +184,13 @@
                     </div>
                     
                     <div class="animate-fade-in-right">
-                        <div class="bg-gradient-to-br from-amb-primary/10 to-amb-accent/10 rounded-3xl p-12 text-center hover-lift">
+                        <div class="bg-white rounded-3xl p-12 text-center hover-lift shadow-lg border border-gray-100">
                             <div class="w-24 h-24 bg-gradient-to-br from-amb-primary to-amb-accent rounded-full flex items-center justify-center mx-auto mb-6">
                                 <i class="fas fa-building text-3xl text-white"></i>
                             </div>
                             <h3 class="text-2xl font-semibold text-amb-text mb-4">Siedziba firmy</h3>
                             <p class="text-gray-600 text-lg">Kraków, Małopolska</p>
+                            <p class="text-gray-600 text-lg">o / Nowy Sącz, Małopolska</p>
                         </div>
                     </div>
                 </div>
@@ -538,19 +400,16 @@
                         <span class="text-lg font-light">SYSTEM</span>
                     </div>
                     <p class="text-gray-300 mb-6 leading-relaxed">
-                        Profesjonalna inspekcja i czyszczenie instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
+                        Profesjonalna czyszczenie i dezynfekcja instalacji HVAC. Zapewniamy najwyższą jakość usług w Krakowie i okolicach.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-amb-primary/20 hover:bg-amb-primary rounded-lg flex items-center justify-center transition-colors">
                             <i class="fab fa-instagram"></i>
                         </a>
-                    </div>
+                    </div> 
                 </div>
                 
                 <div>
@@ -586,7 +445,11 @@
                         </div>
                         <div class="flex items-start space-x-3">
                             <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
-                            <span class="text-gray-300">ul. Wielicka 73/208, 30-552 Kraków</span>
+                            <a href="https://maps.google.com/?q=ul.+Wielicka+73/208,+Kraków+30-552" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">ul. Wielicka 73/208, Kraków 30-552</a>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-amb-primary w-5 mt-1"></i>
+                            <a href="https://www.google.com/maps/place/AMB+System+Centrum+Klimatyzacji+Nowy+S%C4%85cz/@49.6171643,20.7019722,85m/data=!3m1!1e3!4m14!1m7!3m6!1s0x473de537f058a38d:0xcb6159b46a26f0c6!2s%C5%9Aniadeckich+8%2F11,+33-300+Nowy+S%C4%85cz!3b1!8m2!3d49.6172592!4d20.7019869!3m5!1s0x471644ab4536037f:0x21ae9d8586e87111!8m2!3d49.6171328!4d20.7022399!16s%2Fg%2F1tj7v3f5?entry=ttu&g_ep=EgoyMDI1MDYwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-gray-300 hover:text-amb-primary transition-colors">odział ul. Śniadeckich 8/11 Nowy Sącz 33-300</a>
                         </div>
                     </div>
                 </div>
@@ -597,6 +460,7 @@
             </div>
         </div>
     </footer>
+    
     
     <!-- JavaScript -->
     <script>
